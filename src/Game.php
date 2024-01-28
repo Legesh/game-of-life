@@ -10,9 +10,9 @@ class Game
 {
     private const ALIVE_CELL = '*';
     private const DEAD_CELL = ' ';
-    private const TIMEOUT = 50000;
-    private const GRID_WIDTH = 10;
-    private const GRID_HEIGHT = 10;
+    private const TIMEOUT = 100000;
+    private const GRID_WIDTH = 50;
+    private const GRID_HEIGHT = 25;
     private const IS_RANDOM = false;
 
     private array $generationHashes = [];
@@ -22,7 +22,9 @@ class Game
     {
         $this->grid = new Grid(self::GRID_WIDTH, self::GRID_HEIGHT);
         $this->grid->generateCells(self::IS_RANDOM);
-        $this->setTemplate();
+        if (!self::IS_RANDOM) {
+            $this->setTemplate();
+        }
     }
 
     public function setTemplate(): void
